@@ -1,0 +1,60 @@
+<div *ngIf="band == true">
+    <div class="my-3">
+        <div class="card text-center text-white bg-dark mb-3" *ngIf="usuario.alumno.rutinas.length == 0">
+            <div class="card-header">GIMNASIO</div>
+            <div class="card-body">
+                <h5 class="card-title">Lo sentimos {{loginService.userLogged()}}!</h5>
+                <p class="card-text">No tenés ninguna rutina asignada todavía</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3" *ngIf="usuario.alumno.rutinas.length != 0">
+        <div class="card text-white bg-dark mb-3 my-3">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table text-white" [mfData]="rutinas" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Ejercicios</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rutina of mf.data">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{rutina.nombre|uppercase}}</td>
+                                <td>
+                                    <div class="accordion accordion-flush bg-dark" id="accordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button bg-dark text-white collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                    aria-expanded="false" aria-controls="collapseOne">
+                                                    Ejercicios
+                                                </button>
+                                            </h2>
+                                            <div *ngFor="let e of rutina.ejercicios" id="collapseOne"
+                                                class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                                data-bs-parent="#accordion">
+                                                <div class="accordion-body bg-dark text-white" *ngIf="e.nombre">
+                                                    <strong>{{e.nombre|uppercase}}:</strong>
+                                                    {{e.series|series}} de {{e.repeticiones|repe}} con descansos de
+                                                    {{e.descanso}} minutos
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <div>
+                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

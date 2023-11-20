@@ -1,0 +1,33 @@
+<div class="my-3">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header" *ngIf="action == 'new'">
+            Agregar nueva Asistencia
+        </div>
+        <div class="card-header" *ngIf="action == 'update'">
+            Modificar Asistencia
+        </div>
+        <div class="card-body">
+            <form id="formulario" #asistenciaForm="ngForm">
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input id="fecha" type="date" class="form-control" name="fecha"
+                    [(ngModel)]="asistencia.fecha" #fecha="ngModel" required>
+                </div> 
+                <div class="mb-3">
+                    <label for="hora" class="form-label">Hora</label>
+                    <input id="hora" type="time" class="form-control" name="hora"
+                    #hora="ngModel" [(ngModel)]="asistencia.hora" required>
+                </div>
+                <div class="mb-3">
+                    <label for="alumno" class="form-label">Alumno</label>
+                    <input disabled id="alumno" type="text" class="form-control"
+                        placeholder="{{alumno.nombres}} {{alumno.apellido}}">
+                </div>
+            </form>
+            <button type="submit" [disabled]="asistenciaForm.invalid" class="btn btn-primary" (click)="agregarAsistencia()"
+                *ngIf="action == 'new'">Agregar</button>
+            <button type="submit" [disabled]="asistenciaForm.invalid" class="btn btn-primary" (click)="modificarAsistencia()"
+                *ngIf="action == 'update'">Modificar</button>
+        </div>
+    </div>
+</div>

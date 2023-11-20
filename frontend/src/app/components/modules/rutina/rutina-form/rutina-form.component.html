@@ -1,0 +1,61 @@
+<div class="my-3" *ngIf="tope==false">
+    <div class="card text-white bg-dark mb-3 text-center">
+        <div class="card-body">
+            <h5 class="card-title">Este usuario ya tiene {{alumno.rutinas.length}} rutinas asignadas</h5>
+            <p class="card-text">No es posible agregar más rutinas a un alumno con un plan {{alumno.plan}}</p>
+            <button class="btn btn-primary" [routerLink]="['/alumno']">Volver</button>
+        </div>
+    </div>
+</div>
+
+<div class="my-3" *ngIf="tope!=false">
+    <div class="card text-white bg-dark mb-3 my-3">
+        <div class="card-header" *ngIf="action == 'new'">
+            Agregar nueva Rutina
+        </div>
+        <div class="card-header" *ngIf="action == 'update'">
+            Modificar Rutina
+        </div>
+        <div class="card-body">
+            <form #rutinaForm="ngForm">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input id="nombre" type="text" class="form-control" name="nombre" [(ngModel)]="rutina.nombre"
+                        #nombre="ngModel" required sin-caracter-especial>
+                </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                    <div *ngIf="nombre.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="nombre.errors.sinCaracterEspecial">
+                        No se permiten caracteres especiales.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="ejercicios" class="form-label">Ejercicios</label>
+                    <table class="table text-white">
+                        <tbody>
+                            <tr *ngFor="let ejercicio of ejercicios, let i = index">
+                                <th><input class="form-check-input btn-secondary" type="checkbox" value="true" name="cbo"
+                                        [(ngModel)]="cbo[i]"></th>
+                                <td>{{ejercicio.nombre}}</td>
+                                <td>{{ejercicio.series}} series</td>
+                                <td>{{ejercicio.repeticiones}} repeticiones</td>
+                                <td>{{ejercicio.descanso}} minutos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mb-3">
+                    <label for="alumno" class="form-label">Alumno</label>
+                    <input disabled id="alumno" type="text" class="form-control"
+                        placeholder="{{alumno.nombres}} {{alumno.apellido}}">
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="agregarRutina()" [disabled]="rutinaForm.invalid"
+                    *ngIf="action == 'new'">Agregar</button>
+                <button type="submit" class="btn btn-primary" (click)="modificarRutina()"
+                    [disabled]="rutinaForm.invalid" *ngIf="action == 'update'">Modificar</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="my-3">
+    <div class="card text-center" *ngIf="datos==false">
+        <div class="card-header">RUTINAS</div>
+        <div class="card-body">
+            <h5 class="card-title">No se registraron Rutinas de este Alumno</h5>
+        </div>
+    </div>
+</div>
+<div class="card text-white bg-dark mb-3 my-3" *ngIf="datos==true">
+    <div class="card-body">
+        <table class="table text-white" [mfData]="rutinas" #mf="mfDataTable" [mfRowsOnPage]="5">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Ejercicios</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rutina of mf.data">
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{rutina.nombre}}</td>
+                    <td>
+                        <div *ngFor="let ejercicio of rutina.ejercicios">
+                            <div>{{ejercicio.nombre}}: {{ejercicio.series}} series de {{ejercicio.repeticiones}}
+                                repeticiones con descansos de {{ejercicio.descanso}} minutos</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="d-grid gap-2 d-block justify-content-end">
+                                <button type="submit" class="btn btn-primary btn-sm"
+                                    (click)="modificarRutina(rutina)">Editar</button>
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    (click)="borrarRutina(rutina._id)">Borrar</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <div>
+                <mfBootstrapPaginator></mfBootstrapPaginator>
+            </div>
+        </table>
+    </div>
+</div>

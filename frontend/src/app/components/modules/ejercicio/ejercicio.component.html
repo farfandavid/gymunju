@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-end my-3">
+    <button type="submit" class="btn btn-outline-light" (click)="agregarEjercicio()">Agregar nuevo Ejercicio</button>
+</div>
+
+<div class="card text-white bg-dark mb-3 my-3">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table text-white" [mfData]="ejercicios" #mf="mfDataTable" [mfRowsOnPage]="5">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">Repeticiones</th>
+                        <th scope="col">Descanso</th>
+                        <th scope="col">Notas</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ejercicio of mf.data">
+                        <!-- <th scope="row">1</th> -->
+                        <td>{{ejercicio.nombre|uppercase}}</td>
+                        <td>{{ejercicio.series}}</td>
+                        <td>{{ejercicio.repeticiones}}</td>
+                        <td>{{ejercicio.descanso}} minutos</td>
+                        <td>{{ejercicio.notas}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="d-grid gap-2 d-block justify-content-end">
+                                    <button type="submit" class="btn btn-primary btn-sm"
+                                        (click)="modificarEjercicio(ejercicio)">Editar</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        (click)="borrarEjercicio(ejercicio._id)">Borrar</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <div>
+
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+
+                </div>
+            </table>
+        </div>
+    </div>
+</div>

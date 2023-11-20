@@ -1,0 +1,39 @@
+<div *ngIf="band == true">
+    <div class="my-3">
+        <div class="card text-center text-white bg-dark mb-3" *ngIf="usuario.alumno.asistencias.length == 0">
+            <div class="card-header">GIMNASIO</div>
+            <div class="card-body">
+                <h5 class="card-title">Lo sentimos {{loginService.userLogged()}}!</h5>
+                <p class="card-text">No tenés ninguna asistencia todavía</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-3" *ngIf="usuario.alumno.asistencias.length != 0">
+        <div class="card text-white bg-dark mb-3 my-3">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table text-white" [mfData]="asistencias" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let asistencia of mf.data">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{asistencia.fecha}}</td>
+                                <td>{{asistencia.hora}}</td>
+                            </tr>
+                        </tbody>
+                        <div>
+                            <mfBootstrapPaginator></mfBootstrapPaginator>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

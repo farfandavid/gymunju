@@ -1,0 +1,17 @@
+.bg-dark {
+    background-color: #191c24 !important;
+}
+
+.form-control {
+    /* color: #495057; */
+    color: #ffffff;
+    background-color: #2A3038;
+    border: 1px solid #2c2e33;
+}
+
+.form-select {
+    /* color: #495057; */
+    color: #ffffff;
+    background-color: #2A3038;
+    border: 1px solid #2c2e33;
+}

@@ -1,0 +1,60 @@
+<div class="my-3">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header" *ngIf="action == 'new'">
+            Agregar nuevo Ejercicio
+        </div>
+        <div class="card-header" *ngIf="action == 'update'">
+            Modificar Ejercicio
+        </div>
+        <div class="card-body">
+            <form #ejercicioForm="ngForm">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input id="nombre" type="text" class="form-control" name="nombre"
+                    [(ngModel)]="ejercicio.nombre" #nombre="ngModel" required sin-caracter-especial>
+                </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                    <div *ngIf="nombre.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="series" class="form-label">Series</label>
+                    <input id="series" type="number" class="form-control" name="series"
+                    [(ngModel)]="ejercicio.series" #series="ngModel" required pattern="^\d*$">
+                </div>
+                <div *ngIf="series.invalid && (series.dirty || series.touched)" class="alert alert-danger">
+                    <div *ngIf="series.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="repeticiones" class="form-label">Repeticiones</label>
+                    <input id="repeticiones" type="number" class="form-control" name="repeticiones"
+                    [(ngModel)]="ejercicio.repeticiones" #repes="ngModel" required pattern="^\d*$">
+                </div>
+                <div *ngIf="repes.invalid && (repes.dirty || repes.touched)" class="alert alert-danger">
+                    <div *ngIf="repes.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="descanso" class="form-label">Descanso (en minutos)</label>
+                    <input id="descanso" type="string" class="form-control" name="descanso"
+                    [(ngModel)]="ejercicio.descanso" #descanso="ngModel" pattern="^\d*$" required>
+                </div>
+                <div *ngIf="descanso.invalid && (descanso.dirty || descanso.touched)" class="alert alert-danger">
+                    <div *ngIf="descanso.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="notas" class="form-label">Notas</label>
+                    <textarea id="notas" class="form-control" rows="3" name="notas" [(ngModel)]="ejercicio.notas"></textarea>
+                </div>
+                <button type="submit" [disabled]="ejercicioForm.invalid" class="btn btn-primary" (click)="agregarEjercicio()" *ngIf="action == 'new'">Agregar</button>
+                <button type="submit" [disabled]="ejercicioForm.invalid" class="btn btn-primary" (click)="modificarEjercicio()" *ngIf="action == 'update'">Modificar</button>
+            </form>
+        </div>
+    </div>
+</div>

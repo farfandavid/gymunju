@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-end my-3">
+    <button type="submit" class="btn btn-outline-light" (click)="agregarAlumno()">Agregar nuevo Alumno</button>
+    <form class="d-flex ms-2">
+        <input class="form-control" type="search" placeholder="Buscar alumno" aria-label="Search" name="filterAlumno"
+            [(ngModel)]="filterAlumno">
+    </form>
+</div>
+
+<div class="card text-white bg-dark mb-3 my-3">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <div class="table-responsive-lg">
+            <table class="table text-white" [mfData]="alumnos" #mf="mfDataTable" [mfRowsOnPage]="5">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">Alumno</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Celular</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Fecha de Inicio</th>
+                        <th scope="col">Plan</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let alumno of mf.data | filter:filterAlumno">
+                        <!-- <th scope="row">1</th> -->
+                        <td>{{alumno.apellido}}, {{alumno.nombres}}</td>
+                        <td>{{alumno.dni}}</td>
+                        <td>{{alumno.fechaNacimiento}}</td>
+                        <td>{{alumno.celular}}</td>
+                        <td>{{alumno.domicilio}}</td>
+                        <td>{{alumno.email}}</td>
+                        <td>{{alumno.fechaInicio}}</td>
+                        <td>{{alumno.plan}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="d-grid gap-2 d-block justify-content-end">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Gestionar
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <div class="fw-bold ms-3 mb-1">Cuotas</div>
+                                            </li>
+                                            <li><button class="dropdown-item" (click)="agregarCuota(alumno._id)">Agregar
+                                                    cuota</button></li>
+                                            <li><button class="dropdown-item" (click)="verCuotas(alumno._id)">Mostrar
+                                                    todas</button></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <div class="fw-bold ms-3 mb-1">Rutinas</div>
+                                            </li>
+                                            <li><button class="dropdown-item"
+                                                    (click)="agregarRutina(alumno._id)">Agregar
+                                                    rutina</button></li>
+                                            <li><button class="dropdown-item" (click)="verRutinas(alumno._id)">Mostrar
+                                                    todas</button></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <div class="fw-bold ms-3 mb-1">Asistencias</div>
+                                            </li>
+                                            <li><button class="dropdown-item"
+                                                    (click)="agregarAsistencia(alumno._id)">Agregar
+                                                    asistencia</button></li>
+                                            <li><button class="dropdown-item"
+                                                    (click)="verAsistencias(alumno._id)">Mostrar
+                                                    todas</button></li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                        (click)="modificarAlumno(alumno)">Editar</button>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="eliminarUsuarioAlumno(alumno._id)">Borrar</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <div>
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>

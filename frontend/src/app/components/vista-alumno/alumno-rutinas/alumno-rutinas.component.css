@@ -1,0 +1,33 @@
+.bg-dark {
+    background-color: #191c24 !important;
+}
+
+.table {
+    font-size: 0.875rem;
+}
+
+.form-control {
+    /* color: #495057; */
+    color: #ffffff;
+    background-color: #2A3038;
+    border: 1px solid #2c2e33;
+}
+
+.form-select {
+    /* color: #495057; */
+    color: #ffffff;
+    background-color: #2A3038;
+    border: 1px solid #2c2e33;
+}
+
+.accordion-header {
+    background-color: #191c24 !important;
+}
+
+.accordion-item {
+    background-color: #191c24 !important;
+}
+
+.accordion-button::after {
+    background-color: #ffffff;
+}

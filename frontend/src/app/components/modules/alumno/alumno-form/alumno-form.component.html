@@ -1,0 +1,136 @@
+<div class="my-3">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header" *ngIf="action == 'new'">
+            Agregar nuevo Alumno
+        </div>
+        <div class="card-header" *ngIf="action == 'update'">
+            Modificar Alumno
+        </div>
+        <div class="card-body">
+            <form #alumnoForm="ngForm">
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input id="apellido" type="text" class="form-control" name="apellido" [(ngModel)]="alumno.apellido"
+                        #apellido="ngModel" required sin-caracter-especial>
+                </div>
+                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
+                    <div *ngIf="apellido.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="apellido.errors.sinCaracterEspecial">
+                        No se permiten caracteres especiales.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input id="nombre" type="text" class="form-control" name="nombres" [(ngModel)]="alumno.nombres"
+                        #nombre="ngModel" required sin-caracter-especial>
+                </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                    <div *ngIf="apellido.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="nombre.errors.sinCaracterEspecial">
+                        No se permiten caracteres especiales.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="documento" class="form-label">Documento</label>
+                    <input id="documento" type="text" class="form-control" name="dni" [(ngModel)]="alumno.dni"
+                        #documento="ngModel" required minlength="7" maxlength="8" pattern="^\d*$">
+                </div>
+                <div *ngIf="documento.invalid && (documento.dirty || documento.touched)" class="alert alert-danger">
+                    <div *ngIf="documento.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="documento.errors.minlength">
+                        No es un DNI valido.
+                    </div>
+                    <div *ngIf="documento.errors.maxlength">
+                        No es un DNI valido.
+                    </div>
+                    <div *ngIf="documento.errors.pattern">
+                        Este campo solo acepta números
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                    <input id="fechaNacimiento" type="date" class="form-control" name="fechaNacimiento"
+                        [(ngModel)]="alumno.fechaNacimiento" #fechaNacimiento="ngModel" required>
+                </div>
+                <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="fechaNacimiento.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="celular" class="form-label">Celular</label>
+                    <input id="celular" type="text" class="form-control" name="celular" [(ngModel)]="alumno.celular"
+                        #celular="ngModel" required pattern="^\d*$">
+                </div>
+                <div *ngIf="celular.invalid && (celular.dirty || celular.touched)" class="alert alert-danger">
+                    <div *ngIf="celular.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="celular.errors.pattern">
+                        Este campo solo acepta números.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="domicilio" class="form-label">Domicilio</label>
+                    <input id="domicilio" type="text" class="form-control" name="domicilio"
+                        [(ngModel)]="alumno.domicilio" #domicilio="ngModel" required>
+                </div>
+                <div *ngIf="domicilio.invalid && (domicilio.dirty || domicilio.touched)" class="alert alert-danger">
+                    <div *ngIf="domicilio.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div> 
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo electrónico</label>
+                    <input id="correo" type="email" class="form-control" name="email" [(ngModel)]="alumno.email"
+                        #correo="ngModel" email required>
+                </div>
+                <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="alert alert-danger">
+                    <div *ngIf="correo.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                    <div *ngIf="correo.errors.email">
+                        No es un correo electrónico.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                    <input id="fechaInicio" type="date" class="form-control" name="fechaInicio"
+                        [(ngModel)]="alumno.fechaInicio" #fechaInicio="ngModel" required>
+                </div>
+                <div *ngIf="fechaInicio.invalid && (fechaInicio.dirty || fechaInicio.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="fechaInicio.errors.required">
+                        Es necesario completar este campo.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="plan" class="form-label">Plan</label>
+                    <select id="plan" class="form-select" name="nombre" [(ngModel)]="alumno.plan" #plan="ngModel"
+                        required>
+                        <option selected disabled></option>
+                        <option value="Basico">Basico</option>
+                        <option value="Full">Full</option>
+                        <option value="Libre">Libre</option>
+                    </select>
+                </div>
+                <div *ngIf="plan.invalid && (plan.dirty || plan.touched)" class="alert alert-danger">
+                    <div *ngIf="apellido.errors.required">
+                        Es necesario seleccionar una opción.
+                    </div>
+                </div>
+                <button type="submit" [disabled]="alumnoForm.invalid" class="btn btn-primary" (click)="agregarAlumno()"
+                    *ngIf="action == 'new'">Agregar</button>
+                <button type="submit" [disabled]="alumnoForm.invalid" class="btn btn-primary" (click)="modificarAlumno()"
+                    *ngIf="action == 'update'">Modificar</button>
+            </form>
+        </div>
+    </div>
+</div>

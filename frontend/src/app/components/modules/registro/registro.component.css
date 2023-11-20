@@ -1,0 +1,13 @@
+.bg-dark {
+    background-color: #191c24 !important;
+}
+
+.form-control {
+    color: #ffffff;
+    background-color: #2A3038;
+    border: 1px solid #2c2e33;
+}
+
+input::-ms-clear, input::-ms-reveal {
+    display: none;
+}

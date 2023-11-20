@@ -1,0 +1,113 @@
+<div class="row">
+    <div class="col-sm">
+        <div class="card text-white bg-dark mb-3 my-3">
+            <!-- <div class="card-header">
+                Últimas 5 asistencias registradas
+            </div> -->
+            <div class="card-body">
+                <h5 class="card-title">Últimas asistencias registradas</h5>
+                <div class="table-responsive">
+                    <table class="table text-white">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let asistencia of asistencias">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{asistencia.fecha}}</td>
+                                <td>{{asistencia.hora}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="card-footer">
+                <a [routerLink]="['/asistencia']" class="link-dark">Ver todas las asistencias</a>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="col-sm">
+        <div class="card text-white bg-dark mb-3 my-3">
+            <!-- <div class="card-header">
+                Últimas 5 cuotas registradas
+            </div> -->
+            <div class="card-body">
+                <h5 class="card-title">Últimas cuotas registradas</h5>
+                <div class="table-responsive">
+                    <table class="table text-white">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Monto</th>
+                                <th scope="col">Fecha de pago</th>
+                                <th scope="col">Modo de pago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cuota of cuotas">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{cuota.monto | precio}}</td>
+                                <td>{{cuota.fechaPago}}</td>
+                                <td>{{cuota.modoPago}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="card-footer">
+                <a [routerLink]="['/cuota']" class="link-dark">Ver todas las cuotas</a>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm">
+        <div class="card text-white bg-dark mb-3 my-3">
+            <!-- <div class="card-header">
+                Últimos 5 alumnos registrados
+            </div> -->
+            <div class="card-body">
+                <h5 class="card-title">Últimos alumnos registrados</h5>
+                <div class="table-responsive">
+                    <table class="table text-white">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Alumno</th>
+                                <th scope="col">DNI</th>
+                                <th scope="col">Fecha de Nacimiento</th>
+                                <th scope="col">Celular</th>
+                                <th scope="col">Domicilio</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Fecha de Inicio</th>
+                                <th scope="col">Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr" *ngFor="let alumno of alumnos">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{alumno.apellido}}, {{alumno.nombres}}</td>
+                                <td>{{alumno.dni}}</td>
+                                <td>{{alumno.fechaNacimiento}}</td>
+                                <td>{{alumno.celular}}</td>
+                                <td>{{alumno.domicilio}}</td>
+                                <td>{{alumno.email}}</td>
+                                <td>{{alumno.fechaInicio}}</td>
+                                <td>{{alumno.plan}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="card-footer">
+                <a [routerLink]="['/alumno']" class="link-dark">Ver todos los alumnos</a>
+            </div> -->
+        </div>
+    </div>
+</div>

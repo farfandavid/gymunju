@@ -1,0 +1,44 @@
+<div class="my-3">
+    <div class="card text-center" *ngIf="datos==false">
+        <div class="card-header">ASISTENCIA</div>
+        <div class="card-body">
+            <h5 class="card-title">No se registraron Asistencias de este Alumno</h5>
+        </div>
+    </div>
+</div>
+<div class="card text-white bg-dark mb-3 my-3" *ngIf="datos==true">    
+    <div class="card-body">
+        <div class="">
+            <table class="table text-white" [mfData]="asistencias" #mf="mfDataTable" [mfRowsOnPage]="5">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let asistencia of mf.data">
+                        <!-- <th scope="row">1</th> -->
+                        <td>{{asistencia.fecha}}</td>
+                        <td>{{asistencia.hora}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="d-grid gap-2 d-block justify-content-end">
+                                    <button type="submit" class="btn btn-primary btn-sm"
+                                        (click)="modificarAsistencia(asistencia)">Editar</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        (click)="borrarAsistencia(asistencia._id)">Borrar</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <div>
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>

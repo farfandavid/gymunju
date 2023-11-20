@@ -1,0 +1,4 @@
+.card.gradient-card {
+    background-image: linear-gradient(to left, #d41459, #911a6c);
+    border-radius: 6px;
+}
