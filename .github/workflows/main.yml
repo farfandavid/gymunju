@@ -21,7 +21,7 @@ jobs:
       - name: Build application
         run: |
           cd frontend
-          docker build -t finalhia:v2 .
+          docker build -t finalhia .
 
       - name: Stop previous container
         run: docker stop prueba || true
@@ -32,3 +32,4 @@ jobs:
       - name: Run updated container
         run: |
           docker run -d --name prueba -p 4200:4200 finalhia
+
