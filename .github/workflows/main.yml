@@ -31,4 +31,4 @@ jobs:
 
       - name: Run updated container
         run: |
-          docker run -d --name prueba -p 4200:4200 tpfinal
+          docker run -d --name prueba -p 4200:4200 finalhia
