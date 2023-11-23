@@ -21,7 +21,7 @@ jobs:
       - name: Build application
         run: |
           cd frontend
-          docker build -t docker build -t FinalHia:v2 .
+          docker build -t FinalHia:v2 .
 
       - name: Stop previous container
         run: docker stop prueba || true
