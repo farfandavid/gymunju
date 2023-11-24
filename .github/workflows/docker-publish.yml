@@ -30,4 +30,4 @@ jobs:
       run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:$(date +%s)
       
     - name: Docker Push
-      run: docker push farfetchdev/hiafinal:$(date +%s)
+      run: docker push farfetchdev/hiafinal
