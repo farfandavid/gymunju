@@ -29,6 +29,6 @@ jobs:
       working-directory: ./frontend
       env:
         TAG_NAME: ${{ github.run_number }}
-      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:$TAG_NAME
+      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:${{ github.run_number }}
     - name: Docker Push
-      run: docker push farfetchdev/hiafinal:$TAG_NAME
+      run: docker push farfetchdev/hiafinal:${{ github.run_number }}
