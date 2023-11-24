@@ -28,6 +28,6 @@ jobs:
     - name: Build the Docker image
       working-directory: ./frontend
       env:
-        TAG_NAME: ${{ github.job }}
+        TAG_NAME: ${{ github.run_number }}
       run: echo $TAG_NAME
       
