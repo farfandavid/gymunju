@@ -29,5 +29,5 @@ jobs:
       working-directory: ./frontend
       env:
         DATE_VERSION: $(date +%s)
-      run: echo ${{ steps.meta.outputs.tags }}
+      run: echo $GITHUB_JOB
       
