@@ -27,7 +27,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
       working-directory: ./frontend
-      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:$(date +%s)
+      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:latest
       
     - name: Docker Push
       run: docker push farfetchdev/hiafinal
