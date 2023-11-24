@@ -27,8 +27,6 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
       working-directory: ./frontend
-      env:
-        TAG_NAME: ${{ github.run_number }}
-      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:${{ github.run_number }}
+      run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:latest
     - name: Docker Push
-      run: docker push farfetchdev/hiafinal:${{ github.run_number }}
+      run: docker push farfetchdev/hiafinal:latest
