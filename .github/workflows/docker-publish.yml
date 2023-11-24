@@ -28,6 +28,6 @@ jobs:
     - name: Build the Docker image
       working-directory: ./frontend
       env:
-        DATE_VERSION: $(date +%s)
-      run: echo $GITHUB_RUN
+        TAG_NAME: ${{ github.run_id }}
+      run: echo $TAG_NAME
       
