@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:16 as build
 
 WORKDIR /app
 
@@ -10,4 +10,10 @@ RUN npm run build
 
 CMD [ "npm", "start" ]
 
-EXPOSE 4200
+FROM nginx:latest
+
+# Copy the build output to replace the default nginx contents.
+COPY --from=build /app/dist/practico-final/ /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
