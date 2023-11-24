@@ -4,14 +4,14 @@ const alumnoCtrl = {}
 
 alumnoCtrl.getAlumnos = async (req, res) => {
     var alumnos = await Alumno.find()
-    .populate('cuotas')
-    .populate('asistencias')
-    .populate({ 
-        path: 'rutinas',
-        populate: {
-            path: 'ejercicios'
-        }
-    });
+        .populate('cuotas')
+        .populate('asistencias')
+        .populate({
+            path: 'rutinas',
+            populate: {
+                path: 'ejercicios'
+            }
+        });
     res.json(alumnos);
 }
 alumnoCtrl.getAlumno = async (req, res) => {
@@ -19,12 +19,12 @@ alumnoCtrl.getAlumno = async (req, res) => {
     res.json(alumno);
 }
 
-alumnoCtrl.getAlumnosBusquedaDni = async (req, res)=>{
-    const alumno = await Alumno.find({dni:req.params.search})
-    .populate('cuotas')
-    .populate('asistencias')
-    .populate('rutinas');
-    res.json(alumno);  
+alumnoCtrl.getAlumnosBusquedaDni = async (req, res) => {
+    const alumno = await Alumno.find({ dni: req.params.search })
+        .populate('cuotas')
+        .populate('asistencias')
+        .populate('rutinas');
+    res.json(alumno);
 }
 alumnoCtrl.createAlumno = async (req, res) => {
     var alumno = new Alumno(req.body);
@@ -45,7 +45,7 @@ alumnoCtrl.createAlumno = async (req, res) => {
 alumnoCtrl.editAlumno = async (req, res) => {
     const valumno = new Alumno(req.body);
     try {
-        await Alumno.updateOne({_id: req.body._id}, valumno);
+        await Alumno.updateOne({ _id: req.body._id }, valumno);
         res.json({
             'status': '1',
             'msg': 'Alumno actualizado'
