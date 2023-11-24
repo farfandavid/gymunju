@@ -29,4 +29,5 @@ jobs:
       working-directory: ./frontend
       env:
         DATE_VERSION: $(date +%s)
-      run: echo $DATE_VERSION
+      run: echo ${{ GitHub.event_name }}
+      
