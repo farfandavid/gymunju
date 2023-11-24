@@ -8,7 +8,7 @@ import { Asistencia } from '../models/asistencia';
 })
 export class AsistenciaService {
 
-  URL: string = 'http://localhost:3000/api/'
+  URL: string = 'http://192.168.100.10:3000/api/'
 
   constructor(private _http: HttpClient) { }
 

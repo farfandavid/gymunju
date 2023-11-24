@@ -30,3 +30,8 @@ jobs:
       run: docker build . --file Dockerfile --tag farfetchdev/hiafinal:latest
     - name: Docker Push
       run: docker push farfetchdev/hiafinal:latest
+    - name: Build the Docker image Back
+      working-directory: ./backend
+      run: docker build . --file Dockerfile --tag farfetchdev/hiaback:latest
+    - name: Docker Push Back
+      run: docker push farfetchdev/hiaback:latest

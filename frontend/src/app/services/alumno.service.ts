@@ -9,7 +9,7 @@ import { Cuota } from '../models/cuota';
 })
 export class AlumnoService {
 
-  URL: string = "http://localhost:3000/api/"
+  URL: string = "http://192.168.100.10:3000/api/"
 
   constructor(private _http: HttpClient) { }
 
@@ -75,7 +75,7 @@ export class AlumnoService {
     return this._http.delete(this.URL + "alumno/" + id, option);
   }
 
-  buscarAlumnoDni(search:string):Observable<any> {
+  buscarAlumnoDni(search: string): Observable<any> {
     let option = {
       headers: new HttpHeaders({
 
@@ -84,10 +84,10 @@ export class AlumnoService {
 
       })
     }
-    return this._http.get(this.URL + "alumno/" + "search/"+search, option);
+    return this._http.get(this.URL + "alumno/" + "search/" + search, option);
   }
 
-  pagarCuota(id:string,cuota:Cuota):Observable<any>{
+  pagarCuota(id: string, cuota: Cuota): Observable<any> {
     let option = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
@@ -98,6 +98,6 @@ export class AlumnoService {
     }
     let body = JSON.stringify(cuota);
 
-    return this._http.post(this.URL+"alumno/"+id+"/cuota", body, option);
+    return this._http.post(this.URL + "alumno/" + id + "/cuota", body, option);
   }
 }

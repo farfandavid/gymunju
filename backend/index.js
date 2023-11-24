@@ -7,7 +7,7 @@ const cors = require('cors');
 // Middlewares
 
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:4200'}));
+///app.use(cors({origin: 'http://localhost:4200'}));
 
 // Modulo de direccionamiento de rutas
 
@@ -25,6 +25,5 @@ app.set('port', process.env.PORT || 3000);
 
 // Starting the server
 
-app.listen(app.get('port'), () => {
-    console.log(`Server started on port`, app.get('port'));
-});
+app.listen(app.get('port'), '0.0.0.0');
+

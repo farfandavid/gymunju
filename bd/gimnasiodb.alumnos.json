@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "655bf1e885972e35b209617b"
+  },
+  "apellido": "Farfan",
+  "nombres": "David",
+  "dni": 39929763,
+  "fechaNacimiento": "1997-01-03",
+  "celular": {
+    "$numberLong": "3886455301"
+  },
+  "domicilio": "aaa",
+  "email": "aaa@gmail.com",
+  "fechaInicio": "2023-11-20",
+  "plan": "Full",
+  "asistencias": [
+    {
+      "$oid": "655bfaa785972e35b209617e"
+    }
+  ],
+  "cuotas": [
+    {
+      "$oid": "655bfa8685972e35b209617d"
+    }
+  ],
+  "rutinas": [
+    {
+      "$oid": "655bfaa985972e35b209617f"
+    }
+  ]
+}]

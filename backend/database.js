@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://localhost:27017/gimnasiodb';
+const URI = 'mongodb://192.168.100.10:27017/gimnasiodb';
 
 mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(db => console.log('Database is connected'))
